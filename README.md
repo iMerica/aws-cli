@@ -16,11 +16,8 @@ Automated build on Docker Hub
 
 Configure:
 
-```
-export AWS_ACCESS_KEY_ID="<id>"
-export AWS_SECRET_ACCESS_KEY="<key>"
-export AWS_DEFAULT_REGION="<region>"
-```
+- `~/.aws/credentials`
+- `~/.aws/config`
 
 Upload file to S3:
 
@@ -37,13 +34,7 @@ To use `aws.sh` as a drop-in replacement for calls to the aws-cli, use one of th
 Add an alias to your shell:
 
 ```
-alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}" -v "$(pwd):/project" mesosphere/aws-cli'
-```
-
-Or drop it into your path named `aws`:
-
-```
-curl -o /usr/local/bin/aws https://raw.githubusercontent.com/mesosphere/aws-cli/master/aws.sh && chmod a+x /usr/local/bin/aws
+alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_DEFAULT_REGION=us-east-2" -v "$(pwd):/project"  -v "${HOME}/.aws:/root/.aws"  imichael/aws-cli'
 ```
 
 ## Maintenance 
