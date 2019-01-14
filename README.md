@@ -4,38 +4,32 @@ Fork of Mesosphere's AWS CLI in Docker with various improvements.
 
 ## Install
 
-```
-docker pull imichael/aws-cli 
-```
+Pull the latest image:
 
-Automated build on Docker Hub
+    docker pull imichael/aws-cli 
 
-[![DockerHub Badge](http://dockeri.co/image/imichael/aws-cli)](https://hub.docker.com/r/mesosphere/aws-cli/)
 
-## Usage
-
-Configure:
+Create AWS Configuration files with neccessary values.
 
 - `~/.aws/credentials`
 - `~/.aws/config`
 
+Alias command
+
+    alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_DEFAULT_REGION=us-east-2" -v "$(pwd):/project"  -v "${HOME}/.aws:/root/.aws"  imichael/aws-cli'
+
+Automated build on Docker Hub
+
+[![DockerHub Badge](http://dockeri.co/image/imichael/aws-cli)](https://hub.docker.com/r/imichaewl/aws-cli/)
+
+## Example Usage
 Upload file to S3:
 
 ```
-./aws.sh s3 cp ../dcos-centos-virtualbox-0.2.1.box s3://downloads.dcos.io/dcos-vagrant/
+aws s3 cp ../dcos-centos-virtualbox-0.2.1.box s3://downloads.dcos.io/dcos-vagrant/
 ```
 
-Caveat: Because `aws.sh` mounts the current directory as `/project`, paths to local files must be relative to the current directory.
-
-## Install
-
-To use `aws.sh` as a drop-in replacement for calls to the aws-cli, use one of the following methods:
-
-Add an alias to your shell:
-
-```
-alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_DEFAULT_REGION=us-east-2" -v "$(pwd):/project"  -v "${HOME}/.aws:/root/.aws"  imichael/aws-cli'
-```
+Caveat: Because `aws-cli` mounts the current directory as `/project`, paths to local files must be relative to the current directory.
 
 ## Maintenance 
 
