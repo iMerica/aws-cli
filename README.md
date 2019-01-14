@@ -1,16 +1,16 @@
-# AWS CLI in Docker
+# AWS CLI
 
-Containerized AWS CLI on alpine to avoid requiring the aws cli to be installed on CI machines.
+Fork of Mesosphere's AWS CLI in Docker with various improvements.
 
 ## Build
 
 ```
-docker build -t mesosphere/aws-cli .
+docker build -t imichael/aws-cli .
 ```
 
 Automated build on Docker Hub
 
-[![DockerHub Badge](http://dockeri.co/image/mesosphere/aws-cli)](https://hub.docker.com/r/mesosphere/aws-cli/)
+[![DockerHub Badge](http://dockeri.co/image/imichael/aws-cli)](https://hub.docker.com/r/mesosphere/aws-cli/)
 
 ## Usage
 
