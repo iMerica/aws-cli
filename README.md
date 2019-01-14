@@ -1,5 +1,7 @@
 # AWS CLI
 
+[![DockerHub Badge](http://dockeri.co/image/imichael/aws-cli)](https://hub.docker.com/r/imichaewl/aws-cli/)
+
 Fork of Mesosphere's AWS CLI in Docker with various improvements.
 
 ## Install
@@ -17,10 +19,6 @@ Create AWS Configuration files with neccessary values.
 Alias command
 
     alias aws='docker run --rm -t $(tty &>/dev/null && echo "-i") -e "AWS_DEFAULT_REGION=us-east-2" -v "$(pwd):/project"  -v "${HOME}/.aws:/root/.aws"  imichael/aws-cli'
-
-Automated build on Docker Hub
-
-[![DockerHub Badge](http://dockeri.co/image/imichael/aws-cli)](https://hub.docker.com/r/imichaewl/aws-cli/)
 
 ## Example Usage
 Upload file to S3:
