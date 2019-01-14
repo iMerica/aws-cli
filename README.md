@@ -2,10 +2,10 @@
 
 Fork of Mesosphere's AWS CLI in Docker with various improvements.
 
-## Build
+## Install
 
 ```
-docker build -t imichael/aws-cli .
+docker pull imichael/aws-cli 
 ```
 
 Automated build on Docker Hub
